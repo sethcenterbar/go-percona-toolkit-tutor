@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/fatih/color"
 	"github.com/mgutz/ansi"
 	"github.com/sethcenterbar/percona-toolkit-tutor/structs"
 	"github.com/sethcenterbar/percona-toolkit-tutor/utilities"
@@ -27,18 +26,13 @@ import (
 )
 
 func listBlogPosts(t structs.Tool) string {
-	color.Set(color.FgYellow)
 	output := ansi.Color("Some relevant blog posts for learning "+t.Name+":", "cyan+b") + "\n"
-	color.Unset()
-	posts := t.BlogPosts
-	for i, post := range posts {
+	for i, post := range t.BlogPosts {
 		output += "\n" + ansi.Color("Post "+strconv.Itoa(i+1), "yellow+b") + "\n"
 		output += ansi.Color("Description: ", "magenta+b") + post.Description + "\n"
 		output += ansi.Color("       Link: ", "magenta+b") + post.Link + "\n"
-		i++
 	}
-	output += "\n"
-	return output
+	return output + "\n"
 }
 
 // blogsCmd represents the blogs command

@@ -27,15 +27,12 @@ import (
 
 func listExamples(t structs.Tool) string {
 	output := ansi.Color("Some relevant examples for learning "+t.Name+":", "cyan+b") + "\n"
-	examples := t.Examples
-	for i, example := range examples {
+	for i, example := range t.Examples {
 		output += "\n" + ansi.Color("Example "+strconv.Itoa(i+1), "yellow+b") + "\n"
 		output += ansi.Color("Description: ", "magenta+b") + example.Description + "\n"
 		output += ansi.Color("       Link: ", "magenta+b") + example.Command + "\n"
-		i++
 	}
-	output += "\n"
-	return output
+	return output + "\n"
 }
 
 // examplesCmd represents the examples command

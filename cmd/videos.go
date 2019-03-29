@@ -27,16 +27,12 @@ import (
 
 func listVideos(t structs.Tool) string {
 	output := ansi.Color("Some relevant videos for learning "+t.Name+":", "cyan+b") + "\n"
-	videos := t.Videos
-	i := 1
-	for _, video := range videos {
-		output += "\n" + ansi.Color("Video "+strconv.Itoa(i), "yellow+b") + "\n"
+	for i, video := range t.Videos {
+		output += "\n" + ansi.Color("Video "+strconv.Itoa(i+1), "yellow+b") + "\n"
 		output += ansi.Color("Description: ", "magenta+b") + video.Description + "\n"
 		output += ansi.Color("       Link: ", "magenta+b") + video.Link + "\n"
-		i++
 	}
-	output += "\n"
-	return output
+	return output + "\n"
 }
 
 // videosCmd represents the videos command
